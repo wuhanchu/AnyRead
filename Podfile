@@ -3,10 +3,11 @@
 
 target "AnyRead" do
 
+pod 'AFeedly', '~> 0.0'
+pod 'RETableViewManager', '~> 1.5'
 end
 
 target "AnyReadTests" do
 
 end
 
-pod "AFNetworking", "~> 2.0"
