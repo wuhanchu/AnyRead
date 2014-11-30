@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "137F0A8783EAA65D09A7BA97"
+               BlueprintIdentifier = "8D3B89B87D762C23C196EA58"
                BuildableName = "libPods-AnyRead-LROAuth2Client.a"
                BlueprintName = "Pods-AnyRead-LROAuth2Client"
                ReferencedContainer = "container:Pods.xcodeproj">

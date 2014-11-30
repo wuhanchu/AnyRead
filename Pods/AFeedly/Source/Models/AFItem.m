@@ -72,4 +72,11 @@
     
 }
 
+-(NSString*)getcontent{
+    if(self.content != nil)
+        return self.content.content;
+    else
+        return nil;
+}
+
 @end
