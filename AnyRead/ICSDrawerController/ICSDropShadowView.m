@@ -33,6 +33,7 @@
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
     self.layer.shadowPath = shadowPath.CGPath;
+
 }
 
 @end

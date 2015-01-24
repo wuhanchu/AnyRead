@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <MWFeedParser/MWFeedParser.h>
-#import "SMRSSModel.h"
 
 @interface SMFeedParserWrapper : NSObject<MWFeedParserDelegate>
 @property (assign) NSTimeInterval timeoutInterval;//请求超时时间（秒）

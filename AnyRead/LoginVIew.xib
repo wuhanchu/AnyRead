@@ -1,15 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="AnyRead" customModuleProvider="target">
+            <connections>
+                <outlet property="feedlyLoginButton" destination="eKS-Mg-l4J" id="jcS-1a-gCf"/>
+                <outlet property="loginVIew" destination="iN0-l3-epB" id="NUt-vW-nPD"/>
+                <outlet property="offlineButton" destination="dlj-fM-gKn" id="wnR-Z4-9nn"/>
+                <outlet property="view" destination="iN0-l3-epB" id="GV2-tV-3FT"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" colorLabel="IBBuiltInLabel-Orange">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-Mg-l4J">
+                    <rect key="frame" x="206" y="431" width="188" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="188" id="Bzg-Nw-f7Q"/>
+                        <constraint firstAttribute="height" constant="37" id="CjL-E5-FvR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="21"/>
+                    <state key="normal" title="Feedly">
+                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </state>
+                    <connections>
+                        <action selector="loginTouchDown:" destination="-1" eventType="touchDown" id="5io-x3-Uc3"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf6-ak-mTw">
+                    <rect key="frame" x="258" y="201" width="85" height="98"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="SBf-0b-gdv"/>
+                        <constraint firstAttribute="height" constant="98" id="T1Q-hO-hSJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="94"/>
+                    <color key="textColor" red="0.98431378599999997" green="0.96862751250000001" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-fM-gKn">
+                    <rect key="frame" x="206" y="476" width="188" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="5hP-Vk-ycY"/>
+                        <constraint firstAttribute="width" constant="188" id="GAJ-cb-ALY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="21"/>
+                    <state key="normal" title="Offline">
+                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </state>
+                    <connections>
+                        <action selector="offlineTouchDown:" destination="-1" eventType="touchDown" id="1eH-hW-oxw"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.90196084976196289" green="0.43921571969985962" blue="0.44313728809356689" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="Kf6-ak-mTw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="107" id="G8Y-iC-SMy"/>
+                <constraint firstAttribute="centerY" secondItem="Kf6-ak-mTw" secondAttribute="centerY" constant="50" id="MQQ-Nr-agh"/>
+                <constraint firstAttribute="centerX" secondItem="eKS-Mg-l4J" secondAttribute="centerX" id="PJt-Es-Fzk"/>
+                <constraint firstAttribute="bottom" secondItem="dlj-fM-gKn" secondAttribute="bottom" constant="75" id="PQc-WI-OqJ"/>
+                <constraint firstAttribute="centerX" secondItem="dlj-fM-gKn" secondAttribute="centerX" id="Pij-GM-RC2"/>
+                <constraint firstAttribute="centerX" secondItem="Kf6-ak-mTw" secondAttribute="centerX" id="ig7-oh-Gwj"/>
+                <constraint firstItem="dlj-fM-gKn" firstAttribute="top" secondItem="eKS-Mg-l4J" secondAttribute="bottom" constant="20" id="pgJ-RO-zZC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="G8Y-iC-SMy"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

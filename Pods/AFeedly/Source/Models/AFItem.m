@@ -72,11 +72,24 @@
     
 }
 
--(NSString*)getcontent{
+-(NSString*)getFeedContent{
     if(self.content != nil)
         return self.content.content;
     else
         return nil;
+}
+
+-(NSString*) getFeedSummary{
+    if(self.summary != nil)
+        return self.summary.content;
+    else
+        return nil;
+}
+
+- (void)dealloc
+{
+
+    [self removeObserver:self forKeyPath:@"tags"];
 }
 
 @end

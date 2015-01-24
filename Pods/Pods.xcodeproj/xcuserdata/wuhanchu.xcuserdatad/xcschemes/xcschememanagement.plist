@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AnyRead-HTKDynamicResizingCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AnyRead-JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,17 +29,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AnyRead-REFormattedNumberField.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-AnyRead-RETableViewManager.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-AnyRead-REValidation.xcscheme</key>
+		<key>Pods-AnyRead-MWFeedParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>53632D9F2CD3F301EBB76918</key>
+		<key>0678ABE77CFB703DB4933A8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E19F3003CC5F8A8A78FC497</key>
+		<key>223A27F8B657982AF64AD9BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7AC77717A35B36293C481289</key>
+		<key>4D3D4BCB3C6F5B0094CADC67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C558132AA36E0D0CA26C11B</key>
+		<key>8D612CFEA7F309E01475681A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D3B89B87D762C23C196EA58</key>
+		<key>C1D11F852317B2C45D6CCFE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A62EFFA48FFCA859C5224D7</key>
+		<key>C4770EB76A273D3E3F7EC910</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C9F316B1BBC57AA48F6BCA9</key>
+		<key>C89F07C60BA5E5EA934D3520</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C783DE356AE48692F85BB285</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F5CDABAB3293E14C03DA7A31</key>
+		<key>E2BC458DB1CE3F4461303A47</key>
 		<dict>
 			<key>primary</key>
 			<true/>

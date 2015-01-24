@@ -182,6 +182,18 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 }
 
 #pragma mark Pan to open/close the drawer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if([self.centerViewController isKindOfClass:[UINavigationController class]]){
+        UINavigationController* temp =  self.centerViewController;
+        if(temp.viewControllers.count != 1){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     NSParameterAssert([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]);

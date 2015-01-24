@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+/*
+ * subscription table view cells
+ */
+class SubTableViewCell: UITableViewCell{
+
+}

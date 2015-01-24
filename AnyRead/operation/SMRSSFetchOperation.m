@@ -8,7 +8,6 @@
 
 #import "SMRSSFetchOperation.h"
 #import <MWFeedParser/MWFeedParser.h>
-#import "SMRSSModel.h"
 
 //#ifndef PARSER_LOG
 //#define PARSER_LOG 0

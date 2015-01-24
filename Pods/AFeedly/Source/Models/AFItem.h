@@ -46,7 +46,8 @@
 -(void)visualsUrlArray:(void (^)(NSArray*urls ))resultBlock
                failure:(void (^)(NSError*error ))failBlock;
 
--(NSString*)getcontent;
+-(NSString*)getFeedContent;
+-(NSString*)getFeedSummary;
 
 
 

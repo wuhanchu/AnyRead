@@ -18,11 +18,6 @@
 
 - (CDSideBarController*)initWithImages:(NSArray*)images
 {
-    _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _menuButton.frame = CGRectMake(0, 0, 40, 40);
-    [_menuButton setImage:[UIImage imageNamed:@"menuIcon.png"] forState:UIControlStateNormal];
-    [_menuButton addTarget:self action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
-    
     _backgroundMenuView = [[UIView alloc] init];
     _menuColor = [UIColor whiteColor];
     _buttonList = [[NSMutableArray alloc] initWithCapacity:images.count];
@@ -41,21 +36,20 @@
     return self;
 }
 
-- (void)insertMenuButtonOnView:(UIView*)view atPosition:(CGPoint)position
+- (void)insertMenuButtonOnView:(UIView*)view
 {
-    _menuButton.frame = CGRectMake(position.x, position.y, _menuButton.frame.size.width, _menuButton.frame.size.height);
-    [view addSubview:_menuButton];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissMenu)];
-    [view addGestureRecognizer:singleTap];
-    
+    UISwipeGestureRecognizer* leftSwip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showMenu)];
+    leftSwip.numberOfTouchesRequired   = 1;
+    leftSwip.direction                 = UISwipeGestureRecognizerDirectionLeft;
+    [view addGestureRecognizer:leftSwip];
     for (UIButton *button in _buttonList)
     {
         [_backgroundMenuView addSubview:button];
     }
 
     _backgroundMenuView.frame = CGRectMake(view.frame.size.width, 0, 90, view.frame.size.height);
-    _backgroundMenuView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f];
+    _backgroundMenuView.backgroundColor = [UIColor colorWithRed:0.247 green:0.290 blue:0.373 alpha:0.1];
     [view addSubview:_backgroundMenuView];
 }
 
@@ -107,8 +101,6 @@
 - (void)performDismissAnimation
 {
     [UIView animateWithDuration:0.4 animations:^{
-        _menuButton.alpha = 1.0f;
-        _menuButton.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, 0);
         _backgroundMenuView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, 0);
     }];
 }
@@ -117,8 +109,6 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.4 animations:^{
-            _menuButton.alpha = 0.0f;
-            _menuButton.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -90, 0);
             _backgroundMenuView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -90, 0);
         }];
     });

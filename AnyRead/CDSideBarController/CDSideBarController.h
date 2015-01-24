@@ -18,7 +18,6 @@
 @interface CDSideBarController : NSObject
 {
     UIView              *_backgroundMenuView;
-    UIButton            *_menuButton;
     NSMutableArray      *_buttonList;
 }
 
@@ -29,8 +28,10 @@
 @property (nonatomic, retain) id<CDSideBarControllerDelegate> delegate;
 
 - (CDSideBarController*)initWithImages:(NSArray*)buttonList;
-- (void)insertMenuButtonOnView:(UIView*)view atPosition:(CGPoint)position;
+- (void)insertMenuButtonOnView:(UIView*)view;
 
+- (void)showMenu;
+- (void)dismissMenu;
 @end
 
 // 版权属于原作者
