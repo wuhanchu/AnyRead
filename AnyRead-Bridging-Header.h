@@ -9,7 +9,16 @@
 #ifndef AnyRead_Bridging_Header_h
 #define AnyRead_Bridging_Header_h
 
-#import "RETableViewManager.h"
 #import "AFLClient.h"
-//#import "SMDetailViewController.h"
+#import "CDRTranslucentSideBar.h"
+#import "ICSDrawerController.h"
+#import "CDSideBarController.h"
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "WeiboApi.h"
+#import "WeiboSDK.h"
+#import <RennSDK/RennSDK.h>
+#import <AGCommon/UIImage+Common.h>
 #endif

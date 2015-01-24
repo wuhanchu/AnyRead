@@ -13,14 +13,19 @@ import CoreData
 @objc(FeedEntry)
 class FeedEntry: NSManagedObject {
 
-    @NSManaged var author: String
-    @NSManaged var content: String
-    @NSManaged var engagement: NSNumber
-    @NSManaged var id: String
-    @NSManaged var imageUrlString: String
-    @NSManaged var originId: String
-    @NSManaged var published: NSNumber
-    @NSManaged var title: String
-    @NSManaged var unread: NSNumber
-
+    @NSManaged var author: NSString?
+    @NSManaged var content: NSString?
+    @NSManaged var engagement: NSNumber?
+    @NSManaged var id: NSString?
+    @NSManaged var imageUrlString: NSString?
+    @NSManaged var originId: NSString?
+    @NSManaged var published: NSDate?
+    @NSManaged var title: NSString?
+    @NSManaged var unread: Bool
+    @NSManaged var summary: NSString?
+    @NSManaged var subscriptionId:NSString?
+    @NSManaged var synced: Bool
+    @NSManaged var saved: Bool
+    @NSManaged var htmlUrl: NSString?
+    @NSManaged var cached: Bool
 }

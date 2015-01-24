@@ -4,7 +4,8 @@
 target "AnyRead" do
 
 pod 'AFeedly', '~> 0.0'
-pod 'RETableViewManager', '~> 1.5'
+pod 'MWFeedParser', '~> 1.0'
+pod 'HTKDynamicResizingCell', '~> 0.0.1'
 end
 
 target "AnyReadTests" do
