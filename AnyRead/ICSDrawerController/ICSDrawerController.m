@@ -381,7 +381,9 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 
 - (void)open
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateClosed);
+    if(self.drawerState == ICSDrawerControllerStateOpen){
+        return;
+    }
 
     [self willOpen];
     

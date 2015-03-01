@@ -1,6 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFeedly" "${PODS_ROOT}/Headers/Public/HTKDynamicResizingCell" "${PODS_ROOT}/Headers/Public/JSONModel" "${PODS_ROOT}/Headers/Public/LROAuth2Client" "${PODS_ROOT}/Headers/Public/MWFeedParser" "${PODS_ROOT}/Headers/Public/hpple" $(SDKROOT)/usr/include/libxml2
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/AFeedly" -isystem "${PODS_ROOT}/Headers/Public/HTKDynamicResizingCell" -isystem "${PODS_ROOT}/Headers/Public/JSONModel" -isystem "${PODS_ROOT}/Headers/Public/LROAuth2Client" -isystem "${PODS_ROOT}/Headers/Public/MWFeedParser" -isystem "${PODS_ROOT}/Headers/Public/hpple"
-OTHER_LDFLAGS = -ObjC -l"Pods-AnyRead-AFNetworking" -l"Pods-AnyRead-AFeedly" -l"Pods-AnyRead-HTKDynamicResizingCell" -l"Pods-AnyRead-JSONModel" -l"Pods-AnyRead-LROAuth2Client" -l"Pods-AnyRead-MWFeedParser" -l"Pods-AnyRead-hpple" -l"xml2" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
-OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
-PODS_ROOT = ${SRCROOT}/Pods

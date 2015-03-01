@@ -1,1 +1,0 @@
-../../../AFeedly/Source/Models/AFOrigin.h

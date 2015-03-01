@@ -1,1 +1,0 @@
-../../../HTKDynamicResizingCell/HTKDynamicResizingCell/CollectionView/HTKDynamicResizingCollectionViewCell.h

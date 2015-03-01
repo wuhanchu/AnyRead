@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C94b" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="FeedCategory" representedClassName="FeedCategory" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,6 +10,7 @@
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="htmlUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="published" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="saved" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="subscriptionId" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,6 +18,7 @@
         <attribute name="synced" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unread" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="visualUrl" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="FeedSource" representedClassName="FeedSource" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,18 +27,21 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="FeedSubscription" representedClassName="FeedSubscription" syncable="YES">
-        <attribute name="categories" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cached" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="lastUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="server" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadNum" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="visualUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FeedCategory" syncable="YES"/>
     </entity>
     <elements>
         <element name="FeedCategory" positionX="27" positionY="26" width="128" height="73"/>
-        <element name="FeedEntry" positionX="18" positionY="176" width="128" height="225"/>
+        <element name="FeedEntry" positionX="-461" positionY="207" width="128" height="253"/>
         <element name="FeedSource" positionX="279" positionY="-67" width="128" height="103"/>
-        <element name="FeedSubscription" positionX="243" positionY="99" width="128" height="148"/>
+        <element name="FeedSubscription" positionX="243" positionY="99" width="128" height="193"/>
     </elements>
 </model>

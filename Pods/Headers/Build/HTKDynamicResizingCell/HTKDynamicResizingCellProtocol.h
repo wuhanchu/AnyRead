@@ -1,1 +1,0 @@
-../../../HTKDynamicResizingCell/HTKDynamicResizingCell/Protocol/HTKDynamicResizingCellProtocol.h
