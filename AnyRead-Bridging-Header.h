@@ -13,12 +13,19 @@
 #import "CDRTranslucentSideBar.h"
 #import "ICSDrawerController.h"
 #import "CDSideBarController.h"
-#import <ShareSDK/ShareSDK.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WeiboApi.h"
 #import "WeiboSDK.h"
+#import "AKTabBarController.h"
+#import "UIViewController+AKTabBarController.h"
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 #import <RennSDK/RennSDK.h>
 #import <AGCommon/UIImage+Common.h>
+#import "JDStatusBarNotification.h"
+#import "RKTabView.h"
+#import "AFAlternate.h"
+#import "SevenSwitch.h"
+
 #endif

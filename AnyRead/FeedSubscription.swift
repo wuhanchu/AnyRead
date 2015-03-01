@@ -12,13 +12,15 @@ import CoreData
 @objc(FeedSubscription)
 class FeedSubscription: NSManagedObject {
 
-    @NSManaged var categories: NSString
+    @NSManaged var categories: NSSet
     @NSManaged var id: NSString
     @NSManaged var lastUpdated: NSDate?
     @NSManaged var server: NSString?
     @NSManaged var title: NSString
     @NSManaged var unreadNum: NSNumber?
     @NSManaged var website: NSString?
-
+    @NSManaged var imgData: NSData?
+    @NSManaged var visualUrl: NSString?
+    @NSManaged var cached: Bool
 
 }

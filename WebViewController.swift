@@ -11,6 +11,7 @@ import UIKit
 
 class WebViewController:UIViewController{
     var webView:UIWebView?
+    var entryData: FeedEntry?
     /**
     load the view
     */
@@ -32,6 +33,7 @@ class WebViewController:UIViewController{
         swiftRigthRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         webView?.addGestureRecognizer(swiftRigthRecognizer)
     }
+    
     /**
     view wiell show
     
@@ -39,7 +41,11 @@ class WebViewController:UIViewController{
     */
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var request = NSURLRequest(URL: NSURL(string: "http://www.baidu.com")!)
+        var url = entryData?.htmlUrl
+        if(url == nil){
+            url = "http://localhost"
+        }
+        var request = NSURLRequest(URL: NSURL(string: url!)!)
         webView?.loadRequest(request)
     }
     
@@ -52,8 +58,5 @@ class WebViewController:UIViewController{
     func swipeRight(recognizer: UISwipeGestureRecognizer){
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
-
-    
     
 }

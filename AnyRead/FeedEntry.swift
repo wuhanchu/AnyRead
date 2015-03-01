@@ -27,5 +27,7 @@ class FeedEntry: NSManagedObject {
     @NSManaged var synced: Bool
     @NSManaged var saved: Bool
     @NSManaged var htmlUrl: NSString?
+    @NSManaged var imgData: NSData?
     @NSManaged var cached: Bool
+    @NSManaged var visualUrl: NSString?
 }
