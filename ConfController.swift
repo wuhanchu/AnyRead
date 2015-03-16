@@ -17,8 +17,8 @@ class ConfController:UITableViewController,UITableViewDelegate, UITableViewDataS
     var connectTypes = ShareSDK.connectedPlatformTypes()
     // conf title
     var titles = ["自动刷新","是否通知","缓存图片"]//,"是否自动清楚缓存","缓存保留时间"
-    // feedDataManager
-    var feedDataManager = (UIApplication.sharedApplication().delegate as AppDelegate).feedDataManager
+    // feedManager
+    var feedManager = (UIApplication.sharedApplication().delegate as AppDelegate).feedManager
     var dataManager = DataManager()
     var alertView:UIAlertView?
     
@@ -197,7 +197,7 @@ class ConfController:UITableViewController,UITableViewDelegate, UITableViewDataS
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if(buttonIndex == 1){
-          feedDataManager?.cleardata()
+          feedManager?.cleardata()
         }
     }
 

@@ -17,43 +17,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ISSViewDelegate {
     // windows
     var window: UIWindow?
     // feedDelegate
-    var feedDataManager: FeedDataManager?
+    var feedManager: FeedDataManager?
+    // feedlyClient
     var feedlyClient:AFLClient?
-    var loginViewController: LoginViewController?
+    // dataManager
     var dataManager = DataManager()
-    
-    
+    // loginViewController
+    var loginViewController: LoginViewController?
+
     // applicaiton init
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         // fabric
         Fabric.with([Crashlytics(),MoPub()])
        
-        // create the FeedModelDelegate
-        self.feedDataManager = FeedDataManager()
-        loadFeedlyClient()
-        self.feedDataManager?.feedlyClient = self.feedlyClient
+        // create the fedd
+        self.feedManager = FeedDataManager()
+        initFeedlyClient()
+        self.feedManager?.feedlyClient = self.feedlyClient
         
-        // set the notification
+        // regitster the notification
         if(UIApplication.sharedApplication().currentUserNotificationSettings().types != UIUserNotificationType.Badge){
-        var settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+            var settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge, categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         }
     
+        // init share sdk
+        initShareSDK()
+
         // shareSDK
-        ShareSDK.registerApp(AppKeySercet.SHARKSDK_KEY)
-        ShareSDK.connectSinaWeiboWithAppKey(AppKeySercet.WEIBO_KEY, appSecret: AppKeySercet.WEIBO_SECRET, redirectUri: AppKeySercet.WEIBO_REDIRECT_URI)
-        ShareSDK.connectDoubanWithAppKey(AppKeySercet.DOUBAN_KEY, appSecret: AppKeySercet.DOUBAN_SECRET, redirectUri: AppKeySercet.DOUBAN_REDIRECT_URI)
-        
         var showViewController:UIViewController?
         var result =  feedlyClient?.isAuthenticated()
         
         //show view controller
         loginViewController =  LoginViewController(nibName: "LoginView", bundle: nil)
-         var mainController = createMainController()
-       loginViewController?.mainViewController = mainController
+        var mainController = createMainController()
+        loginViewController?.mainViewController = mainController
         showViewController = loginViewController
-        
         
         //set the theme
         var theme = NSUserDefaults.standardUserDefaults().integerForKey(UserStorKey.THEME)
@@ -75,7 +74,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ISSViewDelegate {
         return true;
     }
     
-    // create main controller
+    func applicationDidEnterBackground(application: UIApplication) {
+        var entryDatas =  dataManager.getEntrys(subscriptionId: nil, unread: true, synced: nil, cached: nil,saved: nil)
+        
+        UIApplication.sharedApplication().applicationIconBadgeNumber = entryDatas.count
+        if(NSUserDefaults.standardUserDefaults().boolForKey(ConfKeys.IF_AUTO_REFRE)){
+            feedManager?.startSyncTask()
+        }
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+        feedManager?.stopSyncTask()
+    }
+    
+    /**
+     * init the feedly client
+     */
+    func initFeedlyClient(){
+        feedlyClient = AFLClient.sharedClient()
+        feedlyClient?.initWithApplicationId(AppKeySercet.FEEDLY_KEY, andSecret:AppKeySercet.FEEDLY_SERECT )
+    }
+
+    /**
+     * init the shark sdk
+     */
+    func initShareSDK(){
+        ShareSDK.registerApp(AppKeySercet.SHARKSDK_KEY)
+        ShareSDK.connectSinaWeiboWithAppKey(AppKeySercet.WEIBO_KEY, appSecret: AppKeySercet.WEIBO_SECRET, redirectUri: AppKeySercet.WEIBO_REDIRECT_URI)
+        ShareSDK.connectDoubanWithAppKey(AppKeySercet.DOUBAN_KEY, appSecret: AppKeySercet.DOUBAN_SECRET, redirectUri: AppKeySercet.DOUBAN_REDIRECT_URI)
+        
+    }
+
+    /**
+     * create main controller
+     */
     func createMainController() -> UIViewController{
         var entryListController = EntryListTableViewController()
         var entryNavigator = UINavigationController(rootViewController: entryListController)
@@ -104,25 +136,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ISSViewDelegate {
         // return
         return navigationController;
     }
-    
-    func applicationDidEnterBackground(application: UIApplication) {
-        var entryDatas =  dataManager.getEntrys(subscriptionId: nil, unread: true, synced: nil, cached: nil,saved: nil)
-        
-        UIApplication.sharedApplication().applicationIconBadgeNumber = entryDatas.count
-        if(NSUserDefaults.standardUserDefaults().boolForKey(ConfKeys.IF_AUTO_REFRE)){
-            feedDataManager?.startSyncTask()
-        }
-    }
-    
-    func applicationWillEnterForeground(application: UIApplication) {
-        feedDataManager?.stopSyncTask()
-    }
-    
-    func loadFeedlyClient(){
-        feedlyClient = AFLClient.sharedClient()
-        feedlyClient?.initWithApplicationId(AppKeySercet.FEEDLY_KEY, andSecret:AppKeySercet.FEEDLY_SERECT )
-    }
-    
 }
 
 /**

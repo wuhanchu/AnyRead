@@ -22,7 +22,7 @@ class EntryDetailViewController: UIViewController, RKTabViewDelegate,UIWebViewDe
     var entryDatas: [FeedEntry]! = []
     
     //feedModelDelegate
-    var feedDataManager = (UIApplication.sharedApplication().delegate as AppDelegate).feedDataManager
+    var feedManager = (UIApplication.sharedApplication().delegate as AppDelegate).feedManager
     
     //bottom bar
     var bottomBar: UIView?
@@ -168,7 +168,7 @@ class EntryDetailViewController: UIViewController, RKTabViewDelegate,UIWebViewDe
         
         // get entry
         var entryId = self.entryDatas[self.entryIndex].id
-        var entity =  self.feedDataManager?.dataManager.getEntityById("FeedEntry", id: entryId!)
+        var entity =  self.feedManager?.dataManager.getEntityById("FeedEntry", id: entryId!)
         if(entity != nil){
             var entry = entity as FeedEntry
             var title = entry.title
@@ -190,7 +190,7 @@ class EntryDetailViewController: UIViewController, RKTabViewDelegate,UIWebViewDe
         
         
         // mark  read
-        self.feedDataManager?.markEntryRead(entryId!)
+        self.feedManager?.markEntryRead(entryId!)
      
         }
     }
@@ -198,13 +198,13 @@ class EntryDetailViewController: UIViewController, RKTabViewDelegate,UIWebViewDe
     
     func tabView(tabView: RKTabView!, tabBecameEnabledAtIndex index: Int32, tab tabItem: RKTabItem!) {
          var entryId = self.entryDatas[entryIndex].id
-         feedDataManager?.markEntrySaved(entryId!, saved: true)
+         feedManager?.markEntrySaved(entryId!, saved: true)
             self.entryDatas[entryIndex].saved = true
     }
     
     func tabView(tabView: RKTabView!, tabBecameDisabledAtIndex index: Int32, tab tabItem: RKTabItem!) {
         var entryId = self.entryDatas[entryIndex].id
-        feedDataManager?.markEntrySaved(entryId!, saved: false)
+        feedManager?.markEntrySaved(entryId!, saved: false)
         self.entryDatas[entryIndex].saved = false
     }
 }

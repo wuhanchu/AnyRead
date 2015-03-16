@@ -13,8 +13,8 @@ import UIKit
 *  entry table view
 */
 class EntryListTableViewController: UITableViewController ,FeedRefreshViewController,UITableViewDelegate, UITableViewDataSource,ICSDrawerControllerChild{
-    // feedDataManager
-    var feedDataManager: FeedDataManager? =   (UIApplication.sharedApplication().delegate as AppDelegate).feedDataManager
+    // feedManager
+    var feedManager: FeedDataManager? =   (UIApplication.sharedApplication().delegate as AppDelegate).feedManager
     //  subscription Id
     var subscriptions = []
     // entry datas
@@ -54,7 +54,7 @@ class EntryListTableViewController: UITableViewController ,FeedRefreshViewContro
         self.refreshControl = refresh
         
         // add to feedManager
-        feedDataManager?.addRefreshViewController(self)
+        feedManager?.addRefreshViewController(self)
         
         // load the navigation itme
         segmentedControl = UISegmentedControl(items:[ "所有","未读","保存"])
@@ -140,7 +140,7 @@ class EntryListTableViewController: UITableViewController ,FeedRefreshViewContro
         
         // judge the subscription
         //  subs = NSMutableDictionary()
-        var tempsubs = feedDataManager?.dataManager.getSubscription()
+        var tempsubs = feedManager?.dataManager.getSubscription()
         for subscritpion in tempsubs! {
             subs.setValue(subscritpion, forKey: subscritpion.id)
         }
@@ -163,11 +163,11 @@ class EntryListTableViewController: UITableViewController ,FeedRefreshViewContro
         
         if(subscriptions.count > 0){
             for susbcription in subscriptions{
-                var currentSubscription =  feedDataManager?.dataManager.getEntrys(subscriptionId: susbcription.id,unread: unread,synced:nil, cached: nil,saved:saved)
+                var currentSubscription =  feedManager?.dataManager.getEntrys(subscriptionId: susbcription.id,unread: unread,synced:nil, cached: nil,saved:saved)
                 queryEntrys.addObjectsFromArray(currentSubscription!)
             }
         }else{
-            var currentSubscription =  feedDataManager?.dataManager.getEntrys(subscriptionId: nil,unread: unread,synced:nil, cached: nil, saved: saved)
+            var currentSubscription =  feedManager?.dataManager.getEntrys(subscriptionId: nil,unread: unread,synced:nil, cached: nil, saved: saved)
             queryEntrys.addObjectsFromArray(currentSubscription!)
         }
         
@@ -316,7 +316,7 @@ class EntryListTableViewController: UITableViewController ,FeedRefreshViewContro
     // pull table to refresh
     func pullToRefresh(refresh: UIRefreshControl){
         refresh.beginRefreshing()
-        feedDataManager?.syncFeedData()
+        feedManager?.syncFeedData()
         refresh.endRefreshing()
     }
     
@@ -330,7 +330,7 @@ class EntryListTableViewController: UITableViewController ,FeedRefreshViewContro
         //make read
         var entrys = self.entryDatas[sender.tag] as [FeedEntry]
         for entry in entrys{
-            feedDataManager?.markEntryRead(entry.id!)
+            feedManager?.markEntryRead(entry.id!)
         }
         
         //refresh

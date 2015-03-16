@@ -18,7 +18,7 @@ class SubscriptionTableViewController: UITableViewController,FeedRefreshViewCont
     // drawer
     var drawer:ICSDrawerController!
     // feed Data
-    var feedDataManager:FeedDataManager! = (UIApplication.sharedApplication().delegate as AppDelegate).feedDataManager!
+    var feedManager:FeedDataManager! = (UIApplication.sharedApplication().delegate as AppDelegate).feedManager!
     // subscription data
     var sectionDatas = NSMutableArray()
     var rowDatas  = NSMutableArray()
@@ -48,7 +48,7 @@ class SubscriptionTableViewController: UITableViewController,FeedRefreshViewCont
         
         
         // add to feedManager
-        feedDataManager.addRefreshViewController(self)
+        feedManager.addRefreshViewController(self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -203,7 +203,7 @@ class SubscriptionTableViewController: UITableViewController,FeedRefreshViewCont
     
     func loadData(){
         // judge the param is not nil
-        if(feedDataManager  == nil){
+        if(feedManager  == nil){
             return
         }
         
@@ -212,8 +212,8 @@ class SubscriptionTableViewController: UITableViewController,FeedRefreshViewCont
         rowDatas = NSMutableArray()
         
         //get the data
-        var subscriptionDatas = self.feedDataManager.dataManager.getSubscription()
-        var categoryDatas = NSMutableArray(array: self.feedDataManager.dataManager.getEntitys("FeedCategory"))
+        var subscriptionDatas = self.feedManager.dataManager.getSubscription()
+        var categoryDatas = NSMutableArray(array: self.feedManager.dataManager.getEntitys("FeedCategory"))
         
         // add first secion
         sectionDatas.addObject(SectionData(title: nil, num: nil, category: nil))
@@ -223,7 +223,7 @@ class SubscriptionTableViewController: UITableViewController,FeedRefreshViewCont
         rowDatas.addObject(settingRow)
         
         //section section
-        var totalNum = feedDataManager?.dataManager.getEntrys(subscriptionId: nil, unread: true, synced: nil, cached: nil,saved:nil).count
+        var totalNum = feedManager?.dataManager.getEntrys(subscriptionId: nil, unread: true, synced: nil, cached: nil,saved:nil).count
         sectionDatas.addObject(SectionData(title: "所有", num: totalNum, category: nil))
         rowDatas.addObject( NSMutableArray())
         
@@ -233,7 +233,7 @@ class SubscriptionTableViewController: UITableViewController,FeedRefreshViewCont
         var haveNumArray = NSMutableArray()
         var zeroNumArray = NSMutableArray()
         for subscription in subscriptionDatas {
-            var num = feedDataManager?.dataManager.getEntrys(subscriptionId: (subscription as FeedSubscription).id, unread: true, synced: nil, cached: nil,saved:nil).count
+            var num = feedManager?.dataManager.getEntrys(subscriptionId: (subscription as FeedSubscription).id, unread: true, synced: nil, cached: nil,saved:nil).count
             var subscriptionData =   CellData(title: subscription.title, num: num, subscpriton: subscription as FeedSubscription)
             subDict.setValue(subscription, forKey: subscription.id)
             if(num > 0){

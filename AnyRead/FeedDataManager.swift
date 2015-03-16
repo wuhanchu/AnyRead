@@ -216,7 +216,7 @@ class FeedDataManager: NSObject{
             
             // cache opertiaon
             var operation = CacheOperation()
-            operation.feedDataManager = self
+            operation.feedManager = self
             self.queue.addOperation(operation)
         }
         NSLog("cache opertiaon")
@@ -319,7 +319,7 @@ class FeedDataManager: NSObject{
 */
 class CacheOperation:NSOperation{
     // FeedDataManager
-    var feedDataManager : FeedDataManager?
+    var feedManager : FeedDataManager?
     // img dir
     let documentPath = "tmp"
     
@@ -333,7 +333,7 @@ class CacheOperation:NSOperation{
         if(NSUserDefaults.standardUserDefaults().boolForKey(ConfKeys.IF_CACHE_IMG)){
             
             JDStatusBarNotification.performSelectorOnMainThread("showWithStatus:", withObject: "图片下载", waitUntilDone: true);
-            var entryDatas =  feedDataManager?.dataManager.getEntrys(subscriptionId: nil, unread: true, synced: nil, cached: false,saved: nil)
+            var entryDatas =  feedManager?.dataManager.getEntrys(subscriptionId: nil, unread: true, synced: nil, cached: false,saved: nil)
             
             for entryData in entryDatas! {
                 //download the img and modify url
@@ -346,11 +346,11 @@ class CacheOperation:NSOperation{
                 NSLog("downLog")
                 // update the status
                 entryData.cached = true
-                feedDataManager?.dataManager.commit()
+                feedManager?.dataManager.commit()
             }
             dispatch_async(dispatch_get_main_queue()) {
                 // refresh the view
-                var refrshController = self.feedDataManager?.refreshViewControllers
+                var refrshController = self.feedManager?.refreshViewControllers
                 for viewController in refrshController!{
                     var controller = viewController as UIViewController
                     if(controller.view.hidden == false && controller.conformsToProtocol(FeedRefreshViewController)){
@@ -363,7 +363,7 @@ class CacheOperation:NSOperation{
         
         //stop show the status
         dispatch_async(dispatch_get_main_queue()) {
-            self.feedDataManager?.syncStatus = false
+            self.feedManager?.syncStatus = false
             JDStatusBarNotification.dismiss()
         }
     }
